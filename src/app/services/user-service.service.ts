@@ -10,20 +10,36 @@ export class UserService {
   private apiUrl = 'https://peticiones.online/users';
 
   constructor(private http: HttpClient) {}
+  import { Injectable } from '@angular/core';
+  import { HttpClient } from '@angular/common/http';
+  import { lastValueFrom } from 'rxjs';
+  import { UserInt } from '../interfaces/user-int.interface';
 
-  getUsers(page: number = 1): Promise<any> {
-    return lastValueFrom(this.http.get<UserInt>(`${this.apiUrl}?page=${page}`))
-  }
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class UserService {
+    private apiUrl = 'https://peticiones.online/users';
 
-  getUserById(id: number): Promise<any> {
-    return lastValueFrom(this.http.get<UserInt>(`${this.apiUrl}/${id}`));
-  }
+    constructor(private http: HttpClient) {}
 
-  createUser(user: UserInt): Promise<any> {
-    return lastValueFrom(this.http.post<UserInt>(this.apiUrl, user));
-  }
+    getUsers(page: number = 1): Promise<any> {
+      return lastValueFrom(this.http.get<UserInt>(`${this.apiUrl}?page=${page}`))
+    }
 
-  updateUser(id: number, user: UserInt): Promise<any> {
-    return lastValueFrom(this.http.put<UserInt>(`${this.apiUrl}/${id}`, user));
+    getUserById(id: number): Promise<any> {
+      return lastValueFrom(this.http.get<UserInt>(`${this.apiUrl}/${id}`));
+    }
+
+    createUser(user: UserInt): Promise<any> {
+      return lastValueFrom(this.http.post<UserInt>(this.apiUrl, user));
+    }
+
+    updateUser(id: number, user: UserInt): Promise<any> {
+      return lastValueFrom(this.http.put<UserInt>(`${this.apiUrl}/${id}`, user));
+    }
+
+    deleteUser(id: number): Promise<void> {
+      return lastValueFrom(this.http.delete<void>(`${this.apiUrl}/${id}`));
+    }
   }
-}

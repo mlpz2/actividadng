@@ -1,1 +1,17 @@
-<p>users-list works!</p>
+<div class="row">
+  @for (user of userArray; track user) {
+  <article class="col-12 col-md-3 mb-4">
+      <app-user-data [userData]="user"></app-user-data>
+  </article>
+  }
+
+  <div class="d-flex justify-content-center align-items-center">
+      <button class="btn btn-outline-info text-dark fw-semibold" (click)="previousUsersPage()" [disabled]="currentPage === 1">Previous</button>
+
+  @for (pageNum of getNumberOfUsersPages(); track pageNum) {
+      <button class="btn btn-outline-info text-dark fw-semibold mx-1" (click)="loadUsersPage(pageNum)">{{ pageNum }}</button>
+      }
+
+      <button class="btn btn-outline-info text-dark fw-semibold" (click)="nextUsersPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>
