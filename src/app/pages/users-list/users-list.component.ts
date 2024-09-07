@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserInt } from '../../interfaces/user-int.interface';
+import { Component, inject, OnInit } from '@angular/core';
 import { UserService } from '../../services/user-service.service';
 import { UserDataComponent } from '../../components/user-data/user-data.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-users-list',
@@ -10,19 +10,21 @@ import { UserDataComponent } from '../../components/user-data/user-data.componen
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.css'
 })
-export class HomeComponent implements OnInit {
-  userArray: UserInt[] = [];
+export class UsersListComponent implements OnInit {
+  userArray: any[] = [];
   currentPage: number = 1;
   totalPages: number = 1;
-
-  constructor(private userService: UserService) { }
+  userService = inject(UserService);
+  httpClient = inject(HttpClient);
 
   async ngOnInit(): Promise<void> {
     await this.loadUsersPage(this.currentPage)
   }
 
   async loadUsersPage(page: number): Promise<void> {
+    console.log(page);
     this.userService.getUsers().then((response: any) => {
+      console.log(response);
       this.userArray = response.results;
       this.currentPage = response.total_pages;
       this.totalPages = page;

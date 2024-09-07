@@ -1,1 +1,10 @@
-<p>user-data works!</p>
+<div class="card bg-light">
+  <img [src]="userData.image" class="card-img-top" alt="userData.first_name">
+  <div class="card-body">
+      <h5 class="card-title">{{userData.first_name}} {{userData.last_name}}</h5>
+  </div>
+
+  <div class="card-body d-flex align-items-center justify-content-center">
+      <app-buttons [parent]="'card'" [idUser]="userData.id"></app-buttons>
+  </div>
+</div>
