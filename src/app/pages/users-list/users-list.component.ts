@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class UsersListComponent implements OnInit {
   userArray: any[] = [];
   currentPage: number = 1;
-  totalPages: number = 1;
+  totalPages: number = 2;
   userService = inject(UserService);
   httpClient = inject(HttpClient);
 
@@ -22,12 +22,10 @@ export class UsersListComponent implements OnInit {
   }
 
   async loadUsersPage(page: number): Promise<void> {
-    console.log(page);
-    this.userService.getUsers().then((response: any) => {
-      console.log(response);
+    this.userService.getUsers(page).then((response: any) => {
       this.userArray = response.results;
-      this.currentPage = response.total_pages;
-      this.totalPages = page;
+      this.totalPages = response.total_pages;
+      this.currentPage = page;
     });
   }
 
