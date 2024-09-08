@@ -20,9 +20,9 @@ export class FormComponent implements OnInit {
   activatedRoute = inject(ActivatedRoute)
   type: string = "Crear nuevo"
   isUpdateMode: boolean = false;
-  userId: number | null = null;
+  userId: String = '';
   validador_url_string: RegExp = RegExp('ftp://|http://|https://?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?');
-  validador_username: RegExp = RegExp('(^[A-Za-z0-9_]*$)');
+  validador_username: RegExp = RegExp('(^[A-Za-z0-9_.]*$)');
 
   constructor() {
     this.userForm = new FormGroup({
@@ -35,8 +35,21 @@ export class FormComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.userId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.isUpdateMode = !!this.userId;
+    this.activatedRoute.params.subscribe(async (params: any) => {
+      if (params._id) {
+        this.isUpdateMode = true;
+        this.userId = params._id;
+        this.type = 'Actualizar'
+        const response = await this.userService.getUserById(this.userId!)
+        this.userForm = new FormGroup({
+          email: new FormControl(response.email, [Validators.required, Validators.email]),
+          first_name: new FormControl(response.first_name, [Validators.required, Validators.minLength(3)]),
+          last_name: new FormControl(response.last_name, [Validators.required, Validators.minLength(3)]),
+          username: new FormControl(response.username, [Validators.required, Validators.pattern(this.validador_username)]),
+          image: new FormControl(response.image, [Validators.required, Validators.pattern(this.validador_url_string)]),
+        });
+      }
+    });
   }
 
   onSubmit(): void {
@@ -55,7 +68,7 @@ export class FormComponent implements OnInit {
     }
   }
   async getDataForm() {
-    if (this.userForm.value._id) {
+    if (this.userId) {
       const response = await this.userService.updateUser(this.userId!, this.userForm.value);
       if (response.id) {
         console.log(response)

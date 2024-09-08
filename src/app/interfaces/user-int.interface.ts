@@ -1,8 +1,9 @@
 export interface UserInt {
-  id: number;
-  first_name: string;
-  last_name: string;
-  username: string;
-  email: string;
-  image: string;
+  _id: String,
+  id: number,
+  first_name: String,
+  last_name: String,
+  username: String,
+  email: String,
+  image: String
 }

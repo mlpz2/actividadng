@@ -13,12 +13,12 @@ import { RouterLink } from '@angular/router';
 export class ButtonsComponent {
 
   @Input() parent: string = "";
-  @Input() idUser: number | undefined = 0;
+  @Input() idUser: String | undefined = '';
 
   constructor(private userService: UserService) { }
 
-  async deleteUser(id: number | undefined) {
-    if (id !== undefined) {
+  async deleteUser(id_: String | undefined) {
+    if (id_ !== undefined) {
       Swal.fire({
         title: `Estas seguro de eliminar al usuario: ${this.idUser}?`,
         icon: "warning",
@@ -29,7 +29,7 @@ export class ButtonsComponent {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            await this.userService.deleteUser(id)
+            await this.userService.deleteUser(id_)
             console.log("Borrado")
             Swal.fire({
               title: "Borrado",

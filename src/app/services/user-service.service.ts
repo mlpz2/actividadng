@@ -14,19 +14,19 @@ export class UserService {
     return lastValueFrom(this.httpClient.get<UserInt>(`${this.apiUrl}?page=${page}`))
   }
 
-  getUserById(id: number): Promise<any> {
-    return lastValueFrom(this.httpClient.get<UserInt>(`${this.apiUrl}/${id}`));
+  getUserById(_id: String): Promise<any> {
+    return lastValueFrom(this.httpClient.get<UserInt>(`${this.apiUrl}/${_id}`));
   }
 
   createUser(user: UserInt): Promise<any> {
     return lastValueFrom(this.httpClient.post<UserInt>(this.apiUrl, user));
   }
 
-  updateUser(id: number, user: UserInt): Promise<any> {
-    return lastValueFrom(this.httpClient.put<UserInt>(`${this.apiUrl}/${id}`, user));
+  updateUser(_id: String, user: UserInt): Promise<any> {
+    return lastValueFrom(this.httpClient.put<UserInt>(`${this.apiUrl}/${_id}`, user));
   }
 
-  deleteUser(id: number): Promise<void> {
-    return lastValueFrom(this.httpClient.delete<void>(`${this.apiUrl}/${id}`));
+  deleteUser(_id: String): Promise<void> {
+    return lastValueFrom(this.httpClient.delete<void>(`${this.apiUrl}/${_id}`));
   }
 }
