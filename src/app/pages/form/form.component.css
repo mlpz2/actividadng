@@ -1,0 +1,14 @@
+img.preview {
+  max-width: 128px;
+  max-height: 128px;
+}
+
+div.preview {
+  border: 1px rgba(0, 0, 0, 0.25);
+  outline: auto;
+  outline-style: dotted;
+  outline-color: rgba(0, 0, 0, 0.25);
+  margin: 5px;
+  margin-top: 25px;
+  padding: 10px;
+}

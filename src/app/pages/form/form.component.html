@@ -59,6 +59,13 @@
             @if(checkControl("image", "pattern")) {
             <p class="text-danger mt-2">Introduce una url de imagen válida</p>
             }
+            @if(userForm.get('image') != null && userForm.get('image')!.value != '' && !checkControl("image", "pattern")) {
+            <div class="preview">
+                <label class="form-label" for="image">Previsualización de imagen:</label>
+                &nbsp;
+                <img class="preview" src="{{userForm.get('image')!.value!}}" />
+            </div>
+            }
         </div>
         <input class="btn btn-outline-info fw-bold mt-4" type="submit" value={{type}} [disabled]="!userForm.valid">
 
