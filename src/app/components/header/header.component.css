@@ -1,0 +1,20 @@
+div.icon-title {
+  font-size: 96px;
+  color: rgb(145, 227, 227);
+  -webkit-text-stroke: 4px black;
+}
+div.text-title {
+  font-size: 64px;
+  -webkit-text-stroke: 2px black;
+}
+div.buttons-title {
+  -webkit-text-stroke: 0px black;
+}
+a.buttons-border {
+  font-size: 32px;
+  border: 2px solid black;
+  background-color: rgba(145, 227, 227, 0.5);
+}
+a.buttons-border:hover {
+  color: rgb(184, 119, 21)
+}
