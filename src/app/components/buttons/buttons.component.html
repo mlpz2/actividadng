@@ -1,15 +1,43 @@
 <div class="d-flex flex-row flex-md-column flex-lg-row justify-content-lg-between gap-2">
   @if(parent === 'card') {
   <a class="btn btn-sm btn-info fw-medium text-white d-flex align-items-center justify-content-center mb-2 mb-lg-0"
-      [routerLink]="['/user', idUser]"><span><i
-              class="bi bi-search fw-medium text-white me-2 align-items-center"></i></span>Detalle</a>
-  }@else if (parent === 'view') {
-  <a class="btn btn-sm btn-secondary fw-medium text-white d-flex align-items-center justify-content-center mb-2 mb-lg-0"
-      [routerLink]="['/home']"><span><i class="bi bi-arrow-return-left fw-medium text-white me-2 align-items-center"></i></span>Volver a listado</a>
+      [routerLink]="['/user', idUser]">
+      <span><i class="bi bi-search fw-medium text-white me-2 align-items-center"></i></span>
+      Detalle
+  </a>
+  } @else if (parent === 'view') {
+  <a class="btn btn-lg btn-secondary fw-medium text-white d-flex align-items-center justify-content-center mb-2 mb-lg-0"
+      [routerLink]="['/home']">
+      <span><i class="bi bi-arrow-return-left fw-medium text-white me-2 align-items-center"></i></span>
+      Volver a listado
+  </a>
   }
 
+  @if(parent === 'card') {
   <a class="btn btn-sm btn-warning fw-medium text-white d-flex align-items-center justify-content-center mb-2 mb-lg-0"
-      [routerLink]="['/update', 'user', idUser ]"><span><i class="bi bi-arrow-repeat fw-medium text-white me-2 align-items-center"></i></span>Actualizar</a>
+      [routerLink]="['/update', 'user', idUser ]">
+      <span><i class="bi bi-arrow-repeat fw-medium text-white me-2 align-items-center"></i></span>
+      Actualizar
+  </a>
+  } @else if (parent === 'view') {
+  <a class="btn btn-lg btn-warning fw-medium text-white d-flex align-items-center justify-content-center mb-2 mb-lg-0"
+      [routerLink]="['/update', 'user', idUser ]">
+      <span><i class="bi bi-arrow-repeat fw-medium text-white me-2 align-items-center"></i></span>
+      Actualizar
+  </a>
+  }
+
+  @if(parent === 'card') {
   <button class="btn btn-sm btn-danger fw-medium text-white d-flex align-items-center justify-content-center mb-2 mb-lg-0"
-      (click)="deleteUser(idUser)"><span><i class="bi bi-trash fw-medium text-white me-2 align-items-center"></i></span>Borrar</button>
+      (click)="deleteUser(idUser)">
+      <span><i class="bi bi-trash fw-medium text-white me-2 align-items-center"></i></span>
+      Borrar
+  </button>
+  } @else if (parent === 'view') {
+  <button class="btn btn-lg btn-danger fw-medium text-white d-flex align-items-center justify-content-center mb-2 mb-lg-0"
+      (click)="deleteUser(idUser)">
+      <span><i class="bi bi-trash fw-medium text-white me-2 align-items-center"></i></span>
+      Borrar
+  </button>
+  }
 </div>

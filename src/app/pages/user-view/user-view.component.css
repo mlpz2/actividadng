@@ -1,0 +1,9 @@
+div.inline-wrapper {
+  padding: 4.5%;
+  max-width: 50%;
+  display: inline-block;
+}
+
+div.space {
+  min-height: 20px;
+}

@@ -1,1 +1,35 @@
-<p>user-view works!</p>
+<h4>Detalles del usuario</h4>
+
+<section class="container mt-3">
+    <div class="card shadow p-3">
+        <div class="row">
+            <div class="inline-wrapper">
+                <figure class="col-12 col-md-3">
+                    <img [src]="userData!.image" [alt]="userData?.first_name">
+                </figure>
+            </div>
+            <div class="col-12 col-md-9 inline-wrapper">
+                <h2>{{userData?.first_name}}</h2>
+                <div class="space"></div>
+                <h2>{{userData?.last_name}}</h2>
+                <div class="space"></div>
+                <div class="space"></div>
+                <div class="space"></div>
+                <hr>
+                <div class="space"></div>
+                <div class="space"></div>
+                <h4>Nombre de usuario: <span class="fw-normal">{{userData?.username}}</span></h4>
+                <div class="space"></div>
+                <div class="space"></div>
+                <h5>Email: <span class="fw-normal">{{userData?.email}}</span></h5>
+                <div class="space"></div>
+                <div class="space"></div>
+                <div class="card-body">
+                    <div class="space"></div>
+                    <div class="space"></div>
+                    <app-buttons [parent]="'view'" [idUser]="userData?._id"></app-buttons>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
